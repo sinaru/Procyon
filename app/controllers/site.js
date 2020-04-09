@@ -1,6 +1,6 @@
-import { Controller } from '../../lib/controller.js'
+import defaultExport from '../../lib/controller.js'
 
-export default class SiteController extends Controller{
+export default class SiteController extends defaultExport{
   async welcome() {
     await this.render('site/welcome')
   }

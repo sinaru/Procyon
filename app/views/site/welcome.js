@@ -1,4 +1,4 @@
-import { View } from '../../../lib/view.js'
+import View from '../../../lib/view.js'
 
 export default class WelcomeView extends View {
   get templatePath() {

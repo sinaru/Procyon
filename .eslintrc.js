@@ -10,10 +10,11 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
+  parser: 'babel-eslint',
   rules: {
+    "import/extensions": 0,
+    "no-undef": 0,
+    "template-curly-spacing" : "off",
+    indent : "off"
   },
 };
