@@ -1,0 +1,6 @@
+{
+  "/": {
+    "controller": "site",
+    "action": "welcome"
+  }
+}
