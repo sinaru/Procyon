@@ -1,0 +1,26 @@
+{
+  "name": "procyon",
+  "version": "0.0.1",
+  "description": "A lazy loading front end framework for backend APIs",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^6.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinaru/Procyon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sinaru/Procyon/issues"
+  },
+  "homepage": "https://github.com/sinaru/Procyon#readme"
+}
