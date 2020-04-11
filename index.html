@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="lib/serviceworker/register.js"></script>
-    <script src="lib/app.js" type="module"></script>
+    <script type="module">
+        import App from './lib/app.js'
+        new App()
+    </script>
 </head>
 <body>
 <div id="app">
