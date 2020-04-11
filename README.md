@@ -39,7 +39,8 @@ Depending on the type, the `data` parameter can contain different values.
 The `lib` folder contains all the core and library files of Procyon. Your application
 code have to be put in a separate directory such as `app`.
 
-The `path` parameter in the URL can be used to set navigation route. `routes.json` file specify what path should be handled by what controller and action.
+The `path` parameter in the URL can be used to set navigation route. The `routes.json` file in the app directory 
+specify what path should be handled by what controller and action.
 
 The `controller` directory contains the classes that is used to handle each request. 
 
