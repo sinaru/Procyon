@@ -1,0 +1,15 @@
+{
+  "/": {
+    "controller": "notes",
+    "action": "index"
+  },
+  "notes": {
+    "controller": "notes",
+    "action": "index"
+  },
+  "notes/show": {
+    "controller": "notes",
+    "action": "show",
+    "args": ["id"]
+  }
+}

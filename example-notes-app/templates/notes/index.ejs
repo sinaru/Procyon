@@ -1,0 +1,10 @@
+<h1>All the Notes</h1>
+
+<form>
+    <textarea type="text"  id="content" name="content" ><%= model.get('content') %></textarea>
+    <br/>
+    <input type="button" id="submit" value="<%= model.isNew() ? 'Add Note' : 'Update' %>">
+</form>
+
+<placeholder data-component="notesList"></placeholder>
+
