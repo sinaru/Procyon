@@ -1,4 +1,4 @@
-import defaultExport from '../../lib/controller.js'
+import defaultExport from '/lib/controller'
 
 export default class SiteController extends defaultExport{
   async welcome() {
