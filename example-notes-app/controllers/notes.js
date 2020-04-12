@@ -32,7 +32,7 @@ export default class NotesController extends defaultExport {
           el.innerHTML = `<p>${item.get('content')}</p>`
           return el
         },
-        showPath: function(item) {
+        showLink: function(item) {
           return procyon.pathUrl('notes/show', {id: item.get('id')})
         },
         loader: async (offset, limit) => {
