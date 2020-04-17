@@ -11,5 +11,10 @@
     "controller": "notes",
     "action": "show",
     "args": ["id"]
+  },
+  "notes/delete": {
+    "controller": "notes",
+    "action": "delete",
+    "args": ["id"]
   }
 }

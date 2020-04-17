@@ -19,6 +19,17 @@ export default class NotesController extends defaultExport {
     await this.render('notes/show', { model: note })
   }
 
+  async delete(id) {
+    const note = await Note.find(id)
+    const response = await note.delete()
+    if (response) {
+      procyon.visit('notes')
+    }
+    else {
+      throw new Error('Failed to delete record')
+    }
+  }
+
   notesList() {
     return new List(
       {
@@ -34,6 +45,9 @@ export default class NotesController extends defaultExport {
         },
         showLink: function(item) {
           return procyon.pathUrl('notes/show', {id: item.get('id')})
+        },
+        deleteLink: function(item) {
+          return procyon.pathUrl('notes/delete', {id: item.get('id')})
         },
         loader: async (offset, limit) => {
           const notes = await Note.all()

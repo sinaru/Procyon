@@ -1,9 +1,10 @@
 <h1>All the Notes</h1>
 
 <form>
-    <textarea type="text"  id="content" name="content" ><%= model.get('content') %></textarea>
-    <br/>
-    <input type="button" id="submit" value="<%= model.isNew() ? 'Add Note' : 'Update' %>">
+    <div class="form-group">
+        <textarea class="form-control" id="content" name="content" rows="3" placeholder="Type your note..."><%= model.get('content') %></textarea>
+    </div>
+    <input type="button" id="submit" value="<%= model.isNew() ? 'Add Note' : 'Update' %>" class="btn btn-primary mb-2">
 </form>
 
 <placeholder data-component="notesList"></placeholder>

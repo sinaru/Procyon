@@ -4,12 +4,14 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+
 class Note:
     def __init__(self, content):
         global notes_count
         notes_count = notes_count + 1
         self.content = content
         self.id = notes_count
+
 
 notes = []
 notes_count = 0
@@ -27,6 +29,7 @@ example_notes = [
 for example in example_notes:
     notes.append(Note(example))
 
+
 def find(list, func):
     for item in list:
         if func(item):
@@ -35,14 +38,21 @@ def find(list, func):
     return None
 
 
-
-
 @app.route('/note/get')
 def get_note():
     id = int(request.args['id'])
     func = lambda item: item.id is id
     found = find(notes, func)
     return jsonify(id=found.id, content=found.content)
+
+
+@app.route('/note/delete')
+def delete_note():
+    id = int(request.args['id'])
+    func = lambda item: item.id is not id
+    global notes
+    notes = list(filter(func, notes))
+    return jsonify(status='DELETE')
 
 
 @app.route('/note/batch')
