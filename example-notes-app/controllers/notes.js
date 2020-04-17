@@ -7,7 +7,7 @@ export default class NotesController extends defaultExport {
     this.addStyle('notes')
     const note = new Note()
     const notesList = this.notesList()
-    await this.render('notes/index', {
+    const view = await this.render('notes/index', {
       model: note, data: { note }, components: {
         notesList
       }
