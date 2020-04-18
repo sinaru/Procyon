@@ -11,9 +11,7 @@ export default class IndexView extends View {
   }
 
   async onSubmit(event) {
-    // event.preventDefault()
     await this.model.save()
-    // await this.render()
   }
 
   onContentChange(event) {

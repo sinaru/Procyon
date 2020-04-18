@@ -8,10 +8,12 @@ export default class NotesController extends defaultExport {
     const note = new Note()
     const notesList = this.notesList()
     const view = await this.render('notes/index', {
-      model: note, data: { note }, components: {
+      model: note, components: {
         notesList
       }
     })
+
+    note.when('saved').then(() => view.render());
   }
 
   async show(id) {
