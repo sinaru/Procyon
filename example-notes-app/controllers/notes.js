@@ -13,7 +13,7 @@ export default class NotesController extends defaultExport {
       }
     })
 
-    note.when('saved').then(() => view.render());
+    note.when('saved').then(() => procyon.reload());
   }
 
   async show(id) {
