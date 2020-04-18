@@ -1,6 +1,6 @@
-import View from '/lib/view.js'
+import { View } from '/procyon.js'
 
-export default class WelcomeView extends View {
+export default class extends View {
   get templatePath() {
     return 'site/welcome'
   }
