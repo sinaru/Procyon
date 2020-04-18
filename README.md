@@ -67,9 +67,9 @@ Also, it is important you never store anything "private" in your root directory 
 
 Your application should follow the MVC pattern. There are three main folders that you should have:
 
-    - controllers
-    - models
-    - views
+- controllers
+- models
+- views
     
 Then you should also have `routes.json` file. This maps the URL request to a specified controller handler. Checkout 
 `examples/notes-app`[examples/notes-app] to understand how routes are maps to the controllers in the application.
