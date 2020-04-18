@@ -7,6 +7,7 @@ _A lazy loading front end framework for backend APIs_
 This is a conceptual front-end framework designed to be integrated with a JSON REST API.
 Procyon will handle the route mappings, rendering of static and dynamic content, data management with the API.
 
+Procyon can be used for "multi-page" front-end application development. Procyon uses MVC design pattern to support multi-page request handling.
 
 ### API resource
 
@@ -30,9 +31,23 @@ This is to delete a model through the API.
 Additionally `id` parameter contains the identification value of the model to be deleted.  
 
 `/batch`
-This is to perform a specific action for a set of batches.
+This is to perform a specific action for a set of resource items.
 The `type` parameter is to be used to specify the action. It can be `read`, `post` etc.
 Depending on the type, the `data` parameter can contain different values.
+
+## Creating your app
+
+Essentially this repo itself is Procyon. You just need to serve the root directory from your web server. It is that simple to get you starting. 
+So you should copy or clone the directory first. If you have Python 3, you can start a web server by using `http` module. 
+
+```
+python3 -m http.server
+```
+
+Then create an HTML file. This is going to be your landing page that will handle all the requests. For example take a look at
+[example-welcome-page.html](example-welcome-page.html). 
+
+Also, it is important you never store anything "private" in your root directory as the whole directory is accessible to public. 
 
 ## Development
 
