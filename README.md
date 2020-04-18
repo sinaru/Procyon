@@ -1,6 +1,6 @@
 # Procyon
 
-_A lazy loading front end framework for backend APIs_
+_A lazy loading MVC front end framework_
 
 ## What is Procyon?
 
@@ -8,32 +8,6 @@ This is a conceptual front-end framework designed to be integrated with a JSON R
 Procyon will handle the route mappings, rendering of static and dynamic content, data management with the API.
 
 Procyon can be used for "multi-page" front-end application development. Procyon uses MVC design pattern to support multi-page request handling.
-
-### API resource
-
-Suppose you have a resource called 'note' that you want to store and update in a persistent 
-storage such as database table. The API resource for note should have following end points and respond in JSON.
-They are the default expected endpoints by Procyon. You can override the endpoints in your data model if necessary. 
-
-`/get`
-This is to get data from a resource. 
-Additionally `id` parameter contains the identification value of the model to be read.  
-
-`/post`
-This is to create a new model through API.
-
-`/put`
-This is to update a new model through API.
-Additionally `id` parameter contains the identification value of the model to be updated.  
-
-`/delete`
-This is to delete a model through the API.
-Additionally `id` parameter contains the identification value of the model to be deleted.  
-
-`/batch`
-This is to perform a specific action for a set of resource items.
-The `type` parameter is to be used to specify the action. It can be `read`, `post` etc.
-Depending on the type, the `data` parameter can contain different values.
 
 ## Creating your app
 
@@ -74,21 +48,28 @@ Your application should follow the MVC pattern. There are three main folders tha
 Then you should also have `routes.json` file. This maps the URL request to a specified controller handler. Checkout 
 `examples/notes-app`[examples/notes-app] to understand how routes are maps to the controllers in the application.
 
-## Development
+## API resource
 
-The `lib` directory contains all the core and library files of Procyon. Your application
-code have to be put in a separate directory such as `app`.
+Suppose you have a resource called 'note' that you want to store and update in a persistent 
+storage such as database table. The API resource for note should have following end points and respond in JSON.
+They are the default expected endpoints by Procyon. You can override the endpoints in your data model if necessary. 
 
-The `path` parameter in the URL can be used to set navigation route. The `routes.json` file in the app directory 
-specify what path should be handled by what controller and action.
+`/get`
+This is to get data from a resource. 
+Additionally `id` parameter contains the identification value of the model to be read.  
 
-The `controller` directory contains the classes that is used to handle each request. 
+`/post`
+This is to create a new model through API.
 
-Each class of a controller should inherit directly or as a sub class of a Controller class.
+`/put`
+This is to update a new model through API.
+Additionally `id` parameter contains the identification value of the model to be updated.  
 
-The `views` directory contains the view files that can be used in the controller action to render content.
-Each view class should be inherited from View class.
+`/delete`
+This is to delete a model through the API.
+Additionally `id` parameter contains the identification value of the model to be deleted.  
 
-Templates to be used by the views are locate in `templates` directory. 
-
-The `models` directory contains the data models for each API resource. 
+`/batch`
+This is to perform a specific action for a set of resource items.
+The `type` parameter is to be used to specify the action. It can be `read`, `post` etc.
+Depending on the type, the `data` parameter can contain different values.
