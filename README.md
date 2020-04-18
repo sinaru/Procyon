@@ -47,11 +47,23 @@ python3 -m http.server
 Then create an HTML file. This is going to be your landing page that will handle all the requests. For example take a look at
 [example-welcome-page.html](example-welcome-page.html). 
 
+The important code segment is the initialization of the App. In a script module you should do the following:
+
+```js
+<script type="module">
+    import { App } from '/procyon.js'
+    new App('examples/welcome')
+</script>
+```
+
+Each Application should reside in a sub-directory. The first parameter of the App class takes the location of this directory
+relatively to the current root directory. 
+
 Also, it is important you never store anything "private" in your root directory as the whole directory is accessible to public. 
 
 ## Development
 
-The `lib` folder contains all the core and library files of Procyon. Your application
+The `lib` directory contains all the core and library files of Procyon. Your application
 code have to be put in a separate directory such as `app`.
 
 The `path` parameter in the URL can be used to set navigation route. The `routes.json` file in the app directory 
