@@ -14,6 +14,8 @@ module.exports = {
   rules: {
     "import/extensions": 0,
     "no-undef": 0,
+    "import/no-unresolved": "off",
+    "import/no-absolute-path": "off",
     "template-curly-spacing" : "off",
     indent : "off"
   },

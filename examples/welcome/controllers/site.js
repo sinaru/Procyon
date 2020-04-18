@@ -1,8 +1,12 @@
-import defaultExport from '/lib/controller.js'
+import { Controller } from '/procyon.js';
 
-export default class SiteController extends defaultExport{
+export default class extends Controller {
   async welcome() {
-    this.addStyle('site/index')
-    await this.render('site/welcome')
+    this.addStyle('site/index');
+    await this.render('site/welcome');
+  }
+
+  async about() {
+    await this.render('site/about');
   }
 }
