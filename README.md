@@ -37,7 +37,7 @@ Depending on the type, the `data` parameter can contain different values.
 
 ## Creating your app
 
-Essentially this repo itself is Procyon. You just need to serve the root directory from your web server. It is that simple to get you starting. 
+Essentially this repo itself is whole system. You just need to serve the root directory from your web server. It is that simple to get you starting. 
 So you should copy or clone the directory first. If you have Python 3, you can start a web server by using `http` module. 
 
 ```
@@ -56,10 +56,23 @@ The important code segment is the initialization of the App. In a script module 
 </script>
 ```
 
-Each Application should reside in a sub-directory. The first parameter of the App class takes the location of this directory
+Each Application should reside in a sub-directory (i.e. 'App directory'). The first parameter of the App class takes the location of this directory
 relatively to the current root directory. 
 
+In the body of the page, you should also have `<div id="app">`. This is where the application is going to render to.
+
 Also, it is important you never store anything "private" in your root directory as the whole directory is accessible to public. 
+
+## App directory structure
+
+Your application should follow the MVC pattern. There are three main folders that you should have:
+
+    - controllers
+    - models
+    - views
+    
+Then you should also have `routes.json` file. This maps the URL request to a specified controller handler. Checkout 
+`examples/notes-app`[examples/notes-app] to understand how routes are maps to the controllers in the application.
 
 ## Development
 
