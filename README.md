@@ -1,5 +1,7 @@
 # Procyon
 
+![Node.js CI](https://github.com/sinaru/procyon/workflows/Node.js%20CI/badge.svg)
+
 _A lazy loading MVC front end framework_
 
 ## What is Procyon?
