@@ -1,0 +1,10 @@
+{
+  "/": {
+    "controller": "site",
+    "action": "index"
+  },
+  "about": {
+    "controller": "site",
+    "action": "about"
+  }
+}
