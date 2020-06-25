@@ -1,5 +1,18 @@
-<div class="welcome-wrapper">
-    <h1>Amedius Command Helper</h1>
-    <p>Search code and build the command</p>
+<h1>Amedius Command Helper</h1>
+<p>Search code and build the command</p>
+
+<div>
+    <h3>Current Command</h3>
+    <div class="current-command"></div>
+    <button type="button" class="btn btn-primary">Copy</button>
 </div>
+<form action="#">
+    <div class="form-group">
+        <label for="searchInput">Search</label>
+        <input type="text" class="form-control" id="searchInput" aria-describedby="searchHelp">
+        <small id="searchHelp" class="form-text text-muted">Type a code a text to get codes.</small>
+    </div>
+</form>
+
+<div id="results"></div>
 
