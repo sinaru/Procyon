@@ -11,6 +11,23 @@ Procyon will handle the route mappings, rendering of static and dynamic content,
 
 Procyon can be used for "multi-page" front-end application development. Procyon uses MVC design pattern to support multi-page request handling.
 
+## Setup
+
+Need to have following packages
+    - NodeJS
+    - NPM package manager
+    
+### Ubuntu setup
+
+```
+sudo apt install nodejs npm
+```
+
+Install packages
+
+```
+npm i
+```
 ## Creating your app
 
 Essentially this repo itself is whole system. You just need to serve the root directory from your web server. It is that simple to get you starting. 
