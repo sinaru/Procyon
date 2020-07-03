@@ -1,4 +1,5 @@
-import View from '/lib/view.js'
+import { View } from '/dist/procyon.js';
+
 
 export default class IndexView extends View {
   get templatePath() {

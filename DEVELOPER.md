@@ -1,4 +1,4 @@
-## Procyon Development
+# Procyon Development
 
 The `lib` directory contains all the core and library files of Procyon. Your application
 code have to be put in a separate directory such as `app`.
@@ -16,3 +16,21 @@ Each view class should be inherited from View class.
 Templates to be used by the views are locate in `templates` directory. 
 
 The `models` directory contains the data models for each API resource. 
+
+## Setup
+
+Need to have following packages
+    - NodeJS
+    - NPM package manager
+    
+### Ubuntu setup
+
+```
+sudo apt install nodejs npm
+```
+
+Install packages
+
+```
+npm i
+```

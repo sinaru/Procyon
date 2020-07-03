@@ -1,4 +1,4 @@
-import { Controller } from '/procyon.js';
+import { Controller } from '/dist/procyon.js';
 
 export default class extends Controller {
   async welcome() {

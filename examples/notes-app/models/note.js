@@ -1,4 +1,4 @@
-import DataModel from '/lib/data-model.js'
+import { DataModel } from '/dist/procyon.js';
 
 class Note extends DataModel {
 }
