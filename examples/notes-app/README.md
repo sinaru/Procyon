@@ -15,7 +15,7 @@ To start the backend API server, you need to have Ruby interpreter. Then simply 
 
 The same backend server is available as a Flask app. For this you need to have `flask` and `flask_cors` packages.
 
-Then you can start the Flask backend server by typing: 
+Then in the `scripts` directory, you can start the Flask backend server by typing: 
 
 ```bash
 FLASK_APP=backend-server.py flask run --host=0.0.0.0 --port=3000
