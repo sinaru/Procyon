@@ -13,12 +13,7 @@ Procyon can be used for "multi-page" front-end application development. Procyon 
 
 ## Creating your app
 
-Essentially this repo itself is whole system. You just need to serve the root directory from your web server. It is that simple to get you starting. 
-So you should copy or clone the directory first. If you have Python 3, you can start a web server by using `http` module. 
-
-```
-python3 -m http.server
-```
+You need to use the Procyon distribution JS file founded in `dist` folder.
 
 Then create an HTML file. This is going to be your landing page that will handle all the requests. For example take a look at
 [example-welcome-page.html](example-welcome-page.html). 
@@ -27,7 +22,7 @@ The important code segment is the initialization of the App. In a script module 
 
 ```
 <script type="module">
-    import { App } from '/procyon.js'
+    import { App } from '/dist/procyon.js'
     new App('examples/welcome')
 </script>
 ```
