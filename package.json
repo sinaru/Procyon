@@ -18,7 +18,8 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "npx rollup --config"
+    "build": "npx rollup --config",
+    "lint": "npx eslint src/ --fix"
   },
   "repository": {
     "type": "git",
