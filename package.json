@@ -4,7 +4,7 @@
   "description": "A lazy loading front end framework for backend APIs",
   "main": "index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "src"
   },
   "dependencies": {},
   "devDependencies": {

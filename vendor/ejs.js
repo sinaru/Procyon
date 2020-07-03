@@ -1506,7 +1506,7 @@ module.exports={
   "version": "3.0.2",
   "author": "Matthew Eernisse <mde@fleegix.org> (http://fleegix.org)",
   "license": "Apache-2.0",
-  "main": "./lib/ejs.js",
+  "main": "./src/ejs.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/mde/ejs.git"

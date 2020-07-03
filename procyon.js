@@ -1,5 +1,5 @@
-import App from '/lib/app.js'
-import Controller from '/lib/controller.js'
-import View from '/lib/view.js'
+import App from '/src/app.js';
+import Controller from '/src/controller.js';
+import View from '/src/view.js';
 
 export { App, Controller, View };
