@@ -1,18 +1,20 @@
 export default class Controller {
-  constructor () {
+  constructor() {
     this.styles = [];
   }
+
   static get layout() {
     return 'basic';
   }
 
+  // eslint-disable-next-line class-methods-use-this
   performBeforeAction() {
   }
 
   async performAction(action, ...args) {
     await this[action](...args);
-    if(this.styles.length > 0) {
-      procyon.addStyles(this.styles)
+    if (this.styles.length > 0) {
+      procyon.addStyles(this.styles);
     }
   }
 

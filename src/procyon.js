@@ -4,4 +4,6 @@ import View from './view.js';
 import List from './components/list.js';
 import DataModel from './data-model.js';
 
-export { App, Controller, View, List, DataModel };
+export {
+ App, Controller, View, List, DataModel,
+};

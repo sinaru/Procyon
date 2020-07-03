@@ -66,8 +66,9 @@ class App {
         await returnVal;
       }
     } catch (e) {
-      console.error(`Procyon: ${e.message}`)
-      throw e
+      // eslint-disable-next-line no-console
+      console.error(`Procyon: ${e.message}`);
+      throw e;
     }
   }
 
@@ -76,6 +77,10 @@ class App {
       'vendor/ejs.js',
       'vendor/axios.min.js',
     ]);
+  }
+
+  static reload() {
+    window.location.reload();
   }
 
   basePath() {
@@ -133,19 +138,14 @@ class App {
     window.location = this.pathUrl(path, params);
   }
 
-  reload() {
-    window.location.reload();
-    window.location.reload();
-  }
-
   addStyles(stylePaths) {
     stylePaths.forEach((style) => {
-      const styleUrl = this.appUrl(`styles/${style}.css`)
-      const cssTag = document.createElement( "link" );
-      cssTag.rel = "stylesheet";
+      const styleUrl = this.appUrl(`styles/${style}.css`);
+      const cssTag = document.createElement('link');
+      cssTag.rel = 'stylesheet';
       cssTag.href = styleUrl.href;
       document.head.append(cssTag);
-    })
+    });
   }
 }
 
