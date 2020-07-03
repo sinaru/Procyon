@@ -17,7 +17,8 @@
     "rollup": "^2.18.2"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "npx rollup --config"
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,7 @@
-import defaultExport from '/lib/controller.js'
-import List from '/lib/components/list.js'
-import Note from '../models/note.js'
+import { Controller, List } from '/dist/procyon.js';
+import Note from '../models/note.js';
 
-export default class NotesController extends defaultExport {
+export default class NotesController extends Controller {
   async index () {
     this.addStyle('notes')
     const note = new Note()
