@@ -12,7 +12,7 @@ export default class NotesController extends Controller {
       }
     })
 
-    note.when('saved').then(() => procyon.reload());
+    note.when('saved').then(() => procyon.constructor.reload());
   }
 
   async show(id) {

@@ -35,6 +35,10 @@ class Router {
     return procyon.constructor.currentURL.hash.substring(1);
   }
 
+  static hasAnchor() {
+    return !!procyon.constructor.currentURL.hash;
+  }
+
   async whenReady() {
     const jsonUrl = procyon.appUrl('routes.json');
     const response = await fetch(jsonUrl);
@@ -58,16 +62,12 @@ class Router {
   routeReference() {
     let routeKey = '/';
     if (this.hasPath()) routeKey = this.constructor.pathParam();
-    else if(this.hasAnchor()) routeKey = this.constructor.anchor();
+    else if (this.constructor.hasAnchor()) routeKey = this.constructor.anchor();
     return this.routes[routeKey];
   }
 
   hasPath() {
     return !!this.constructor.pathParam();
-  }
-
-  hasAnchor() {
-    return !!procyon.constructor.currentURL.hash;
   }
 
   path() {
@@ -156,19 +156,21 @@ class View {
 }
 
 class Controller {
-  constructor () {
+  constructor() {
     this.styles = [];
   }
+
   static get layout() {
     return 'basic';
   }
 
+  // eslint-disable-next-line class-methods-use-this
   performBeforeAction() {
   }
 
   async performAction(action, ...args) {
     await this[action](...args);
-    if(this.styles.length > 0) {
+    if (this.styles.length > 0) {
       procyon.addStyles(this.styles);
     }
   }
@@ -266,7 +268,7 @@ class DataModel {
 
   async delete() {
     try {
-      const response = await axios.get(this.deletePath, { params: { id: this.get('id') } });
+      await axios.get(this.deletePath, { params: { id: this.get('id') } });
       return true;
     } catch (e) {
       return false;
@@ -300,7 +302,7 @@ DataModel.count = async function () {
 };
 
 class List extends View {
-  constructor (options = { size: 2 }) {
+  constructor(options = { size: 2 }) {
     super();
     this.index = parseInt(procyon.constructor.param('page') || 0, 0);
     this.length = options.length;
@@ -312,7 +314,7 @@ class List extends View {
     if (options.cssClass) this.cssClass = options.cssClass;
   }
 
-  async render () {
+  async render() {
     if (!this.el) {
       this.el = document.createElement('div');
       this.el.classList.add('list-component');
@@ -325,7 +327,7 @@ class List extends View {
     await this.renderPagination();
   }
 
-  async renderItems () {
+  async renderItems() {
     if (!this.content) {
       this.content = document.createElement('div');
       this.content.classList.add('items');
@@ -337,7 +339,7 @@ class List extends View {
     items.forEach((item) => this.renderItem(item));
   }
 
-  renderItem (item) {
+  renderItem(item) {
     const el = this.html(item);
     el.classList.add('item');
     const show = document.createElement('div');
@@ -352,26 +354,26 @@ class List extends View {
     this.content.appendChild(el);
   }
 
-  deleteLinkEl (item) {
+  deleteLinkEl(item) {
     const deleteLink = this.deleteLink(item);
-    return this.link(deleteLink, 'Delete')
+    return this.constructor.link(deleteLink, 'Delete');
   }
 
-  showLinkEl (item) {
+  showLinkEl(item) {
     const showLink = this.showLink(item);
-    return this.link(showLink, 'View')
+    return this.constructor.link(showLink, 'View');
   }
 
-  link (showLink, text) {
+  static link(showLink, text) {
     const link = document.createElement('a');
     link.innerHTML = text;
     link.classList.add('btn');
     link.classList.add('btn-secondary');
     link.href = showLink;
-    return link
+    return link;
   }
 
-  async renderPagination () {
+  async renderPagination() {
     if (!this.pagination) {
       this.pagination = document.createElement('nav');
       this.pagination.classList.add('pagination-wrapper');
@@ -403,7 +405,7 @@ class List extends View {
     }
   }
 
-  onPaginationClick (event) {
+  onPaginationClick(event) {
     this.pagination.querySelectorAll('li.current').forEach((el) => el.classList.remove('current', 'active'));
     event.target.classList.add('current', 'active');
     event.target.parentElement.classList.add('current', 'active');
@@ -414,7 +416,7 @@ class List extends View {
 }
 
 class Config {
-  constructor (configJson = {}) {
+  constructor(configJson = {}) {
     this.apiUrl = null;
     if (configJson.api) this.apiUrl = new URL(configJson.api);
   }
@@ -484,8 +486,9 @@ class App {
         await returnVal;
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(`Procyon: ${e.message}`);
-      throw e
+      throw e;
     }
   }
 
@@ -494,6 +497,10 @@ class App {
       'vendor/ejs.js',
       'vendor/axios.min.js',
     ]);
+  }
+
+  static reload() {
+    window.location.reload();
   }
 
   basePath() {
@@ -551,16 +558,11 @@ class App {
     window.location = this.pathUrl(path, params);
   }
 
-  reload() {
-    window.location.reload();
-    window.location.reload();
-  }
-
   addStyles(stylePaths) {
     stylePaths.forEach((style) => {
       const styleUrl = this.appUrl(`styles/${style}.css`);
-      const cssTag = document.createElement( "link" );
-      cssTag.rel = "stylesheet";
+      const cssTag = document.createElement('link');
+      cssTag.rel = 'stylesheet';
       cssTag.href = styleUrl.href;
       document.head.append(cssTag);
     });

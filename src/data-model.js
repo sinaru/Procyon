@@ -65,7 +65,7 @@ class DataModel {
 
   async delete() {
     try {
-      const response = await axios.get(this.deletePath, { params: { id: this.get('id') } });
+      await axios.get(this.deletePath, { params: { id: this.get('id') } });
       return true;
     } catch (e) {
       return false;

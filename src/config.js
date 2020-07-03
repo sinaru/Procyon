@@ -1,5 +1,5 @@
 class Config {
-  constructor (configJson = {}) {
+  constructor(configJson = {}) {
     this.apiUrl = null;
     if (configJson.api) this.apiUrl = new URL(configJson.api);
   }

@@ -9,6 +9,10 @@ class Router {
     return procyon.constructor.currentURL.hash.substring(1);
   }
 
+  static hasAnchor() {
+    return !!procyon.constructor.currentURL.hash;
+  }
+
   async whenReady() {
     const jsonUrl = procyon.appUrl('routes.json');
     const response = await fetch(jsonUrl);
@@ -30,18 +34,14 @@ class Router {
   }
 
   routeReference() {
-    let routeKey = '/'
+    let routeKey = '/';
     if (this.hasPath()) routeKey = this.constructor.pathParam();
-    else if(this.hasAnchor()) routeKey = this.constructor.anchor();
+    else if (this.constructor.hasAnchor()) routeKey = this.constructor.anchor();
     return this.routes[routeKey];
   }
 
   hasPath() {
     return !!this.constructor.pathParam();
-  }
-
-  hasAnchor() {
-    return !!procyon.constructor.currentURL.hash;
   }
 
   path() {
