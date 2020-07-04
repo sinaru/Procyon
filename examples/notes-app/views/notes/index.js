@@ -2,20 +2,18 @@ import { View } from '/dist/procyon.js';
 
 
 export default class IndexView extends View {
-  get templatePath() {
-    return 'notes/index'
-  }
-
   bindings() {
-    this.bind('#content', 'onchange', this.onContentChange)
-    this.bind('#submit', 'onclick', this.onSubmit)
+    this.bind('#content', 'onchange', this.onContentChange);
+    this.bind('#submit', 'onclick', this.onSubmit);
   }
 
-  async onSubmit(event) {
-    await this.model.save()
+  async onSubmit() {
+    await this.model.save();
   }
 
   onContentChange(event) {
-    this.model.set('content', event.target.value)
+    this.model.set('content', event.target.value);
   }
 }
+
+IndexView.templatePath = 'notes/index';

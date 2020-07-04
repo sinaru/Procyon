@@ -1,7 +1,5 @@
-import { View } from '/dist/procyon.js'
+import { View } from '/dist/procyon.js';
 
-export default class extends View {
-  get templatePath() {
-    return 'site/about'
-  }
-}
+export default class AboutView extends View {}
+
+AboutView.templatePath = 'site/about';

@@ -1,7 +1,5 @@
 import { View } from '/dist/procyon.js';
 
-export default class ShowView extends View {
-  get templatePath() {
-    return 'notes/show'
-  }
-}
+export default class ShowView extends View {}
+
+ShowView.templatePath = 'notes/show';
