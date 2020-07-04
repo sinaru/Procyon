@@ -72,7 +72,7 @@ class View {
 
   async templateStr() {
     if (this.cachedTemplateStr) return this.cachedTemplateStr;
-    const response = await fetch(procyon.relativeUrl(`${procyon.appFolder}/templates/${this.templatePath}.ejs`));
+    const response = await fetch(procyon.relativeUrl(`${procyon.appFolder}/templates/${this.constructor.templatePath}.ejs`));
     this.cachedTemplateStr = await response.text();
     return this.cachedTemplateStr;
   }
