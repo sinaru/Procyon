@@ -14,6 +14,10 @@ Procyon can be used for "multi-page" front-end application development. Procyon 
 ## Creating your app
 
 You need to use the Procyon distribution JS file founded in `dist` folder.
+The library also depends on [Axios](https://github.com/axios/axios), so you will need to add that as a script tag.
+```html
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+```
 
 Then create an HTML file. This is going to be your landing page that will handle all the requests. For example take a look at
 [example-welcome-page.html](example-welcome-page.html). 

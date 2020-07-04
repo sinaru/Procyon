@@ -74,8 +74,6 @@ class App {
 
   static async loadLib() {
     await requireFiles([
-      'vendor/ejs.js',
-      'vendor/axios.min.js',
     ]);
   }
 
