@@ -14,8 +14,8 @@ Procyon can be used for "multi-page" front-end application development. Procyon 
 ## Creating your app
 
 You need to use the Procyon distribution JS file founded in `dist` folder.
-The library also depends on [Axios](https://github.com/axios/axios), so you will need to add that as a script tag.
-```html
+The library also depends on [Axios](https://github.com/axios/axios), so you will need to add that as a script tag in your main html file.
+```
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 ```
 
@@ -31,12 +31,12 @@ The important code segment is the initialization of the App. In a script module 
 </script>
 ```
 
-Each Application should reside in a sub-directory (i.e. 'App directory'). The first parameter of the App class takes the location of this directory
-relatively to the current root directory. 
+In the body of the page, you should have `<div id="app"></div>`. This is where the application is going to render in to.
 
-In the body of the page, you should also have `<div id="app">`. This is where the application is going to render to.
+The first parameter of the App class takes the location of application directory relatively to the current root directory. 
+If the application also located in the root directory, simply pas `.` as the application path.
 
-Also, it is important you never store anything "private" in your root directory as the whole directory is accessible to public. 
+Also, it is important you never store anything "private" in your application directory as the whole directory is accessible to public. 
 
 ## App directory structure
 
@@ -50,6 +50,8 @@ Then you should also have `routes.json` file. This maps the URL request to a spe
 `examples/notes-app`[examples/notes-app] to understand how routes are maps to the controllers in the application.
 
 ## API resource
+
+A Pyocyon-based data model will expect several API endpoints to manage the data it represents.
 
 Suppose you have a resource called 'note' that you want to store and update in a persistent 
 storage such as database table. The API resource for note should have following end points and respond in JSON.
