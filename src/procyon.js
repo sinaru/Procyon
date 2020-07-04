@@ -1,4 +1,4 @@
-import './vendor/ejs.min.js';
+import '../vendor/ejs.min.js';
 
 import App from './app.js';
 import Controller from './controller.js';
