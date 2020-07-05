@@ -19,6 +19,7 @@ function requireFiles(files) {
 
 class App {
   constructor(appFolder = 'app', config = {}) {
+    this.root = this.constructor.rootElement;
     this.config = new Config(config);
     this.appFolder = appFolder;
     this.classReferences = {};
@@ -135,7 +136,7 @@ class App {
   }
 
   appendElement(el) {
-    this.constructor.rootElement.append(el);
+    this.root.append(el);
   }
 
   visit(path, params = {}) {
