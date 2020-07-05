@@ -8,16 +8,18 @@ Network.get = async (path, options) => {
   return await fetch(url);
 };
 
-Network.post = async (path, options) => {
-  // eslint-disable-next-line no-return-await
+Network.jsonPost = async (path, options) => {
   const response = await fetch(path, {
-    method: 'post',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(options),
   });
   return response.json();
 };
 
-Network.json = async (...args) => {
+Network.jsonGet = async (...args) => {
   const response = await Network.get(...args);
   return response.json();
 };
