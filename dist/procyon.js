@@ -446,6 +446,12 @@ class App {
     this.classReferences = {};
     this.setBootUrl();
     this.setBasePath();
+    if (this.config.apiUrl) {
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'preconnect');
+      link.setAttribute('href', this.config.apiUrl);
+      this.appendElement(link);
+    }
     this.boot()
       .then(() => this.prepareRequest())
       .then(() => this.processRequest());
