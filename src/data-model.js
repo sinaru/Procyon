@@ -1,3 +1,5 @@
+import Network from './network.js';
+
 class DataModel {
   constructor(attr = {}) {
     this.emitter = document.createElement('div'); // to have an event emitter
@@ -30,8 +32,8 @@ class DataModel {
 
   static async find(id) {
     const obj = new this();
-    const response = await axios.get(obj.getPath, { params: { id } });
-    obj.object2attr(response.data);
+    const response = await Network.jsonGet(obj.getPath, { params: { id } });
+    obj.object2attr(response);
     return obj;
   }
 
@@ -50,22 +52,20 @@ class DataModel {
   async save() {
     try {
       const response = this.isNew()
-        ? await axios.post(this.savePath, this.attributes)
-        : await axios.post(this.updatePath, this.attributes);
+        ? await Network.jsonPost(this.savePath, this.attributes)
+        : await Network.jsonPost(this.updatePath, this.attributes);
       this.object2attr(response.data);
       this.dispatch('saved');
     } catch (e) {
-      if (e.isAxiosError) throw e; // todo handle
-
       const module = await import('./data-model-error.js');
       const ErrorKlass = module.default;
-      throw new ErrorKlass(this, 'Failed to save record');
+      throw new ErrorKlass(this, 'Something went wrong! Failed to save record');
     }
   }
 
   async delete() {
     try {
-      await axios.get(this.deletePath, { params: { id: this.get('id') } });
+      await Network.get(this.deletePath, { params: { id: this.get('id') } });
       return true;
     } catch (e) {
       return false;
@@ -89,8 +89,8 @@ class DataModel {
 
 DataModel.all = async function () {
   const model = new this();
-  const response = await axios.get(model.batchPath, { params: { action: 'all' } });
-  return response.data.map((item) => new this(item));
+  const response = await Network.jsonGet(model.batchPath, { params: { action: 'all' } });
+  return response.map((item) => new this(item));
 };
 
 DataModel.count = async function () {

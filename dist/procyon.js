@@ -203,6 +203,32 @@ class Controller {
   }
 }
 
+class Network {
+}
+
+Network.get = async (path, options) => {
+  const urlParams = Object.entries(options.params || []).map((item) => `${item[0]}=${item[1]}`).join('&');
+  const url = `${path}?${urlParams}`;
+  // eslint-disable-next-line no-return-await
+  return await fetch(url);
+};
+
+Network.jsonPost = async (path, options) => {
+  const response = await fetch(path, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(options),
+  });
+  return response.json();
+};
+
+Network.jsonGet = async (...args) => {
+  const response = await Network.get(...args);
+  return response.json();
+};
+
 class DataModel {
   constructor(attr = {}) {
     this.emitter = document.createElement('div'); // to have an event emitter
@@ -235,8 +261,8 @@ class DataModel {
 
   static async find(id) {
     const obj = new this();
-    const response = await axios.get(obj.getPath, { params: { id } });
-    obj.object2attr(response.data);
+    const response = await Network.jsonGet(obj.getPath, { params: { id } });
+    obj.object2attr(response);
     return obj;
   }
 
@@ -255,22 +281,20 @@ class DataModel {
   async save() {
     try {
       const response = this.isNew()
-        ? await axios.post(this.savePath, this.attributes)
-        : await axios.post(this.updatePath, this.attributes);
+        ? await Network.jsonPost(this.savePath, this.attributes)
+        : await Network.jsonPost(this.updatePath, this.attributes);
       this.object2attr(response.data);
       this.dispatch('saved');
     } catch (e) {
-      if (e.isAxiosError) throw e; // todo handle
-
       const module = await Promise.resolve().then(function () { return dataModelError; });
       const ErrorKlass = module.default;
-      throw new ErrorKlass(this, 'Failed to save record');
+      throw new ErrorKlass(this, 'Something went wrong! Failed to save record');
     }
   }
 
   async delete() {
     try {
-      await axios.get(this.deletePath, { params: { id: this.get('id') } });
+      await Network.get(this.deletePath, { params: { id: this.get('id') } });
       return true;
     } catch (e) {
       return false;
@@ -294,8 +318,8 @@ class DataModel {
 
 DataModel.all = async function () {
   const model = new this();
-  const response = await axios.get(model.batchPath, { params: { action: 'all' } });
-  return response.data.map((item) => new this(item));
+  const response = await Network.jsonGet(model.batchPath, { params: { action: 'all' } });
+  return response.map((item) => new this(item));
 };
 
 DataModel.count = async function () {
@@ -441,6 +465,7 @@ function requireFiles(files) {
 
 class App {
   constructor(appFolder = 'app', config = {}) {
+    this.root = this.constructor.rootElement;
     this.config = new Config(config);
     this.appFolder = appFolder;
     this.classReferences = {};
@@ -557,7 +582,7 @@ class App {
   }
 
   appendElement(el) {
-    this.constructor.rootElement.append(el);
+    this.root.append(el);
   }
 
   visit(path, params = {}) {

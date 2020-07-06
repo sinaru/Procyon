@@ -5,3 +5,4 @@ import './controller.js';
 import './data-model.js';
 import './components/list.js';
 import './config.js';
+import './network.js';
